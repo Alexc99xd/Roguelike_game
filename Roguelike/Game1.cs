@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Roguelike.Content;
 
 namespace Roguelike
 {
@@ -13,6 +14,7 @@ namespace Roguelike
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         PlayerContent playerContent;
+        WorldContent worldContent;
 
         public Game1()
         {
@@ -44,6 +46,7 @@ namespace Roguelike
 
             // TODO: use this.Content to load your game content here
             playerContent = new PlayerContent(Content);
+            worldContent = new WorldContent(Content);
         }
 
         /// <summary>
