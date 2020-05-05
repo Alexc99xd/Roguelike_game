@@ -18,10 +18,30 @@ namespace Roguelike.Controller
         public KeyboardController()
         {
             //keyStack = new KeyPressStack<Keys>();
+            ControllerMappings c = new ControllerMappings();
+            currentMapping = c.GameConfigs;
         }
 
         public void Update()
         {
+            pressedKeys = Keyboard.GetState().GetPressedKeys();
+
+            Keys[] keysToPress = DifferenceMapping(pressedKeys, prevKeyArray);
+            Keys[] keysToUnPress = DifferenceMapping(prevKeyArray, pressedKeys);
+
+            foreach(Keys k in keysToPress)
+            {
+                if(currentMapping.ContainsKey(k))
+                    currentMapping[k].Execute();
+            }
+
+            foreach(Keys k in keysToUnPress)
+            {
+                if (currentMapping.ContainsKey(k))
+                    currentMapping[k].DeExecute();
+            }
+
+            prevKeyArray = pressedKeys;
             //we could either do
             //update every key on every frame (aka) key.execute()
 
@@ -32,6 +52,15 @@ namespace Roguelike.Controller
             //or a bit of both
             //WASD -> could be the pressedDown/pressedUp
             //rest of keys could be everyframe
+        }
+
+        private Keys[] DifferenceMapping(Keys[] A, Keys[] B)
+        {
+            //take everything from A and diff with B
+            IEnumerable<Keys> newKeyPressed = A.Except(B);
+            //check if each key in newKeyPressed is in mapping
+
+            return newKeyPressed.ToArray();
         }
 
         //private void ArrayChangeToStack(Keys[] pressedKeys, Dictionary<Keys, ICommand> mapping)

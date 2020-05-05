@@ -18,10 +18,13 @@ namespace Roguelike
         public Texture2D PlayerDefaultSpriteSheet { get; set; }
         public PlayerContent(ContentManager content)
         {
-            //this.content = content;
-            PlayerDefaultSpriteSheet = content.Load<Texture2D>("SmileyWalk");
+            this.content = content;
+            PlayerDefaultSpriteSheet = content.Load<Texture2D>("Player/SmileyWalk");
         }
 
+        public PlayerContent()
+        {
+        }
 
         public void Unload()
         {

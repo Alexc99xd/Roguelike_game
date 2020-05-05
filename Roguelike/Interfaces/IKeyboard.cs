@@ -8,8 +8,7 @@ namespace Roguelike.Interfaces
 {
     public interface IKeyboard
     {
-        //public Dictionary<>
+        //Dictionary<>
 
-       // public onPressDown
     }
 }

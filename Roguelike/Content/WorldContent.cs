@@ -19,7 +19,7 @@ namespace Roguelike.Content
         public WorldContent(ContentManager content)
         {
             //this.content = content;
-            PlaceHolderBG = content.Load<Texture2D>("placeHolderBG");
+            PlaceHolderBG = content.Load<Texture2D>("World/placeHolderBG");
         }
 
 

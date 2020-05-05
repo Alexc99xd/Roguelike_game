@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Roguelike.Content;
+using Roguelike.Controller;
+using Roguelike.Player;
 
 namespace Roguelike
 {
@@ -11,15 +13,35 @@ namespace Roguelike
     /// </summary>
     public class Game1 : Game
     {
+        private static Game1 uniqueInstance;
+        //private PlayerManager
+        //private IController;
+        private KeyboardController keyboard;
+        private MainPlayer player;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        PlayerContent playerContent;
+        public PlayerContent playerContent;
         WorldContent worldContent;
+        public Texture2D test;
 
-        public Game1()
+        private Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            keyboard = new KeyboardController();
+            //player = MainPlayer.Instance();
+
+        }
+
+        public static Game1 GetInstance()
+        {
+            if (uniqueInstance == null)
+            {
+                uniqueInstance = new Game1();
+            }
+
+            return uniqueInstance;
         }
 
         /// <summary>
@@ -44,8 +66,9 @@ namespace Roguelike
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
             playerContent = new PlayerContent(Content);
+            test = playerContent.PlayerDefaultSpriteSheet;
+            test = Content.Load<Texture2D>("Player/SmileyWalk");
             worldContent = new WorldContent(Content);
         }
 
@@ -65,11 +88,8 @@ namespace Roguelike
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            // TODO: Add your update logic here
-
+            MainPlayer.Instance().Update(gameTime);
+            keyboard.Update();
             base.Update(gameTime);
         }
 
@@ -83,8 +103,8 @@ namespace Roguelike
 
             spriteBatch.Begin(SpriteSortMode.BackToFront);
 
-            // TODO: Add your drawing code here
-
+            MainPlayer.Instance().Draw(spriteBatch);
+            //spriteBatch.Draw(test, new Rectangle(0, 0, 800, 480), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }

@@ -41,15 +41,17 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\MoveUpCommand.cs" />
     <Compile Include="Content\PlayerContent.cs" />
     <Compile Include="Content\WorldContent.cs" />
+    <Compile Include="Controller\ControllerMappings.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Controller\KeyPressStack.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IKeyboard.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
-    <Compile Include="Player\Player.cs" />
+    <Compile Include="Player\MainPlayer.cs" />
     <Compile Include="Player\PlayerManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

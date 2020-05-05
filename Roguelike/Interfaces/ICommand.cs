@@ -4,6 +4,8 @@ namespace Roguelike.Interfaces
 {
     public interface ICommand
     {
-        public void Execute();
+        void Execute();
+
+        void DeExecute();
     }
 }
