@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Roguelike.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,29 +9,18 @@ using System.Threading.Tasks;
 
 namespace Roguelike.Player
 {
-    public sealed class MainPlayer
+    public class MainPlayer
     {
-        int X;
-        int Y;
+        public Vector2 Location { get; set; }
+        public IPlayerState State;
+
         bool moveUp = false;
         //probably should have player states...
-        private MainPlayer()
+        public MainPlayer()
         {
-
-            X = 100;
-            Y = 100;
+            Location = new Vector2(100, 100);
         }
 
-        private static MainPlayer uniqueInstance;
-
-        public static MainPlayer Instance()
-        {
-            if(uniqueInstance == null)
-            {
-                uniqueInstance = new MainPlayer();
-            }
-            return uniqueInstance;
-        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -40,23 +30,8 @@ namespace Roguelike.Player
 
         public void Update(GameTime gameTime)
         {
-            //if state = move up...
-            if (moveUp)
-            {
-                Y--;
-            }
-        }
 
-        public void MoveUp()
-        {
-            moveUp = true;
         }
-
-        public void StopMoveUp()
-        {
-            moveUp = false;
-        }
-
 
     }
 }
