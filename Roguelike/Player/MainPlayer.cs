@@ -13,6 +13,7 @@ namespace Roguelike.Player
     {
         public Vector2 Location { get; set; }
         public IPlayerState State;
+        public Vector2 Velocity { get; set; }
 
         bool moveUp = false;
         //probably should have player states...
@@ -24,13 +25,12 @@ namespace Roguelike.Player
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Game1.GetInstance().test, new Rectangle(X, Y, 320, 320), Color.White);
-            //spriteBatch.Draw(Game1.GetInstance().playerContent.PlayerDefaultSpriteSheet, new Rectangle(X, Y, Game1.GetInstance().playerContent.PlayerDefaultSpriteSheet.Width, Game1.GetInstance().playerContent.PlayerDefaultSpriteSheet.Height), new Rectangle(Game1.GetInstance().playerContent.PlayerDefaultSpriteSheet.Width, Game1.GetInstance().playerContent.PlayerDefaultSpriteSheet.Height, Game1.GetInstance().playerContent.PlayerDefaultSpriteSheet.Width, Game1.GetInstance().playerContent.PlayerDefaultSpriteSheet.Height), Color.White);
+           
         }
 
         public void Update(GameTime gameTime)
         {
-
+            State.Update(gameTime);
         }
 
     }
