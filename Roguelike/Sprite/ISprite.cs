@@ -13,5 +13,7 @@ namespace Roguelike.Sprite
         void Draw(SpriteBatch spriteBatch);
 
         void Update(GameTime gameTime);
+
+        Vector2 Location { get; set; }
     }
 }

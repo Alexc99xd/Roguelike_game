@@ -1,19 +1,26 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Roguelike.Interfaces;
 using Roguelike.Player;
-
+using Roguelike.Sprite;
 
 namespace Roguelike.PlayerState
 {
     public class LeftState : IPlayerState
     {
+        public bool isUp { get => false; }
+        public bool isDown { get => false; }
+        public bool isLeft { get => true; }
+        public bool isRight { get => false; }
+        private ISprite sprite;
         public LeftState()
         {
-
+            PlayerManager.Instance().PlayerInfo.sprite = PlayerSpriteFactory.Instance.CreatePlayerLeftSprite(PlayerManager.Instance().Location);
         }
+
         public void Update(GameTime gameTime)
         {
-            PlayerManager.Instance().Velocity += new Vector2(0, -1);
+            PlayerManager.Instance().Velocity = new Vector2(0, -1);
         }
 
         public void MoveUp()

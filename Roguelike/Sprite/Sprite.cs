@@ -6,13 +6,13 @@ namespace Roguelike.Sprite
 {
     public class Sprite : ISprite
     {
+        public Vector2 Location { get; set; }
         //possibly have destRect as hitbox, or list of circles, idk. Maybe both lol
         private Texture2D texture;
         private bool updateAnimation = true;
         private int currentFrame;
         private int timeSinceLastFrame;
         private float priority;
-        private Vector2 location;
         private int frameWidth;
         private int frameHeight;
         private Rectangle destinationRectangle;
@@ -20,11 +20,12 @@ namespace Roguelike.Sprite
         private int numFrames = 1;
         private int framesPerSecond = 1;
         private int millisecondsPerFrame => 1000 / framesPerSecond;
+        private bool simpleDraw = false;
         public Sprite(Texture2D texture, float priority, Vector2 location)
         {
             this.texture = texture;
             this.priority = priority;
-            this.location = location;
+            this.Location = location;
             frameWidth = texture.Width;
             frameHeight = texture.Height;
             tint = Color.White;
@@ -33,19 +34,39 @@ namespace Roguelike.Sprite
         {
             this.texture = texture;
             this.priority = priority;
-            this.location = location;
+            this.Location = location;
             frameWidth = texture.Width;
             frameHeight = texture.Height;
             tint = color;
         }
 
+        public Sprite(Texture2D texture, Vector2 location)
+        {
+            this.texture = texture;
+            this.priority = 0;
+            this.Location = location;
+            frameWidth = texture.Width;
+            frameHeight = texture.Height;
+            tint = Color.White;
+            simpleDraw = true;
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle sourceRectangle = new Rectangle(currentFrame * frameWidth, 0, frameWidth, frameHeight);
-            destinationRectangle = new Rectangle((int)location.X, (int)location.Y, frameWidth, frameHeight);
-            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, tint, 0, Vector2.Zero, SpriteEffects.None, priority);
+            if (!simpleDraw)
+            {
+                Rectangle sourceRectangle = new Rectangle(currentFrame * frameWidth, 0, frameWidth, frameHeight);
+                destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, frameWidth, frameHeight);
+                spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, tint, 0, Vector2.Zero, SpriteEffects.None, priority);
+            } 
+            else
+            {
+                spriteBatch.Draw(texture, Location, Color.White);
+            }
+
 
         }
+
+
 
         public void Update(GameTime gameTime)
         {

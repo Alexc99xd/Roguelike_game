@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Roguelike.Interfaces
 {
@@ -14,6 +10,10 @@ namespace Roguelike.Interfaces
         void MoveDown();
         void MoveLeft();
         void MoveRight();
+        bool isUp { get; }
+        bool isDown { get; }
+        bool isLeft { get; }
+        bool isRight { get; }
 
     }
 }

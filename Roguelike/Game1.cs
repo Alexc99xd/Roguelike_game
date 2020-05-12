@@ -17,7 +17,6 @@ namespace Roguelike
         //private PlayerManager
         //private IController;
         private KeyboardController keyboard;
-        private MainPlayer player;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public PlayerContent playerContent;
@@ -30,7 +29,7 @@ namespace Roguelike
             Content.RootDirectory = "Content";
 
             keyboard = new KeyboardController();
-            //player = MainPlayer.Instance();
+
 
         }
 
@@ -53,7 +52,7 @@ namespace Roguelike
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            PlayerManager.Instance().Initialize();
             base.Initialize();
         }
 
@@ -66,10 +65,9 @@ namespace Roguelike
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            playerContent = new PlayerContent(Content);
-            test = playerContent.PlayerDefaultSpriteSheet;
-            test = Content.Load<Texture2D>("Player/SmileyWalk");
-            worldContent = new WorldContent(Content);
+            PlayerManager.Instance().LoadContent(Content);
+
+            //worldContent = new WorldContent(Content);
         }
 
         /// <summary>
@@ -88,7 +86,7 @@ namespace Roguelike
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            MainPlayer.Instance().Update(gameTime);
+            PlayerManager.Instance().Update(gameTime);
             keyboard.Update();
             base.Update(gameTime);
         }
@@ -103,7 +101,7 @@ namespace Roguelike
 
             spriteBatch.Begin(SpriteSortMode.BackToFront);
 
-            MainPlayer.Instance().Draw(spriteBatch);
+            PlayerManager.Instance().Draw(spriteBatch);
             //spriteBatch.Draw(test, new Rectangle(0, 0, 800, 480), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);

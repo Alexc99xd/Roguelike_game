@@ -3,21 +3,21 @@ using Roguelike.Player;
 
 namespace Roguelike.Commands
 {
-    public class MoveUpCommand : ICommand
+    public class MoveLeftCommand : ICommand
     {
-        public MoveUpCommand()
+        public MoveLeftCommand()
         {
 
         }
 
         public void Execute()
         {
-            PlayerManager.Instance().MoveUp();
+            PlayerManager.Instance().MoveLeft();
         }
 
         public void DeExecute()
         {
-            PlayerManager.Instance().StopMoveUp();
+            PlayerManager.Instance().StopMoveLeft();
         }
     }
 }

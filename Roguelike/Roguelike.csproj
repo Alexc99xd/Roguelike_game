@@ -41,6 +41,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\MoveRightCommand.cs" />
+    <Compile Include="Commands\MoveLeftCommand.cs" />
+    <Compile Include="Commands\MoveDownCommand.cs" />
     <Compile Include="Commands\MoveUpCommand.cs" />
     <Compile Include="Content\PlayerContent.cs" />
     <Compile Include="Content\WorldContent.cs" />

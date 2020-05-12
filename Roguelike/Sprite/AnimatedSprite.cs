@@ -6,6 +6,7 @@ namespace Roguelike.Sprite
 {
     public class AnimatedSprite : ISprite
     {
+        public Vector2 Location { get; set; }
         //possibly have destRect as hitbox, or list of circles, idk. Maybe both lol
         private Texture2D texture;
         private bool updateAnimation = true;
@@ -14,7 +15,6 @@ namespace Roguelike.Sprite
         private int numFrames;
         private int framesPerSecond;
         private float priority;
-        private Vector2 location;
         private int millisecondsPerFrame;
         private int frameWidth;
         private int frameHeight;
@@ -26,7 +26,7 @@ namespace Roguelike.Sprite
             numFrames = numOfFrames;
             this.framesPerSecond = framesPerSecond;
             this.priority = priority;
-            this.location = location;
+            this.Location = location;
             millisecondsPerFrame = 1000 / framesPerSecond;
             frameWidth = texture.Width / columns;
             frameHeight = texture.Height / rows;
@@ -38,7 +38,7 @@ namespace Roguelike.Sprite
             numFrames = numOfFrames;
             this.framesPerSecond = framesPerSecond;
             this.priority = priority;
-            this.location = location;
+            this.Location = location;
             millisecondsPerFrame = 1000 / framesPerSecond;
             frameWidth = texture.Width / numFrames;
             frameHeight = texture.Height;

@@ -1,24 +1,26 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Roguelike.Interfaces;
 using Roguelike.Player;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Roguelike.Sprite;
 
 namespace Roguelike.PlayerState
 {
     public class DownLeftState : IPlayerState
     {
+        public bool isUp { get => false; }
+        public bool isDown { get => true; }
+        public bool isLeft { get => true; }
+        public bool isRight { get => false; }
+        private ISprite sprite;
         public DownLeftState()
         {
-
+            PlayerManager.Instance().PlayerInfo.sprite = PlayerSpriteFactory.Instance.CreatePlayerDownLeftSprite(PlayerManager.Instance().Location);
         }
 
         public void Update(GameTime gameTime)
         {
-            PlayerManager.Instance().Velocity += new Vector2(1, -1); //later have some speed constant instead of 1,1
+            PlayerManager.Instance().Velocity = new Vector2(1, -1); //later have some speed constant instead of 1,1
         }
 
         public void MoveUp()

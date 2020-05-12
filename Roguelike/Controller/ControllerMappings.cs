@@ -16,6 +16,9 @@ namespace Roguelike.Controller
         {
             GameConfigs = new Dictionary<Keys, ICommand> { 
                 { Keys.W, new MoveUpCommand() } ,
+                { Keys.A, new MoveLeftCommand() },
+                { Keys.S, new MoveDownCommand() },
+                { Keys.D, new MoveRightCommand() },
             };
         }
 
