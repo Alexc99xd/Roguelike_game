@@ -20,7 +20,7 @@ namespace Roguelike.PlayerState
 
         public void Update(GameTime gameTime)
         {
-            PlayerManager.Instance().Velocity = new Vector2(0, -1);
+            PlayerManager.Instance().Velocity = new Vector2(-1, 0);
         }
 
         public void MoveUp()

@@ -34,7 +34,7 @@ namespace Roguelike
             PlayerDownSpriteSheet = content.Load<Texture2D>("Player/DownSpriteSheet");
             PlayerLeftSpriteSheet = content.Load<Texture2D>("Player/LeftSpriteSheet");
             PlayerRightSpriteSheet = content.Load<Texture2D>("Player/RightSpriteSheet");
-            PlayerUpLeftSpriteSheet = content.Load<Texture2D>("Player/UpSpriteSheet");
+            PlayerUpLeftSpriteSheet = content.Load<Texture2D>("Player/UpLeftSpriteSheet");
             PlayerUpRightSpriteSheet = content.Load<Texture2D>("Player/UpRightSpriteSheet");
             PlayerUpSpriteSheet = content.Load<Texture2D>("Player/UpSpriteSheet");
             ArrowSpriteSheet = content.Load<Texture2D>("Player/arrowSpriteSheet");

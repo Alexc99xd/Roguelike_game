@@ -25,7 +25,7 @@ namespace Roguelike.PlayerState
 
         public void Update(GameTime gameTime)
         {
-            PlayerManager.Instance().Velocity = new Vector2(-1, 1);
+            PlayerManager.Instance().Velocity = new Vector2(1, -1);
         }
 
         public void MoveUp()

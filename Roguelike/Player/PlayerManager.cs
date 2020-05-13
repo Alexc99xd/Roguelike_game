@@ -58,21 +58,37 @@ namespace Roguelike.Player
         public void MoveUp()
         {
             //check if down state and do supermove up?
-            PlayerInfo.State.MoveUp(); 
+            if (PlayerInfo.State.isDown)
+            {
+                PlayerInfo.State.MoveUp();
+            }
+            PlayerInfo.State.MoveUp();
         }
 
         public void MoveDown()
         {
+            if (PlayerInfo.State.isUp)
+            {
+                PlayerInfo.State.MoveDown();
+            }
             PlayerInfo.State.MoveDown();
         }
 
         public void MoveLeft()
         {
+            if (PlayerInfo.State.isRight)
+            {
+                PlayerInfo.State.MoveLeft();
+            }
             PlayerInfo.State.MoveLeft();
         }
 
         public void MoveRight()
         {
+            if (PlayerInfo.State.isLeft)
+            {
+                PlayerInfo.State.MoveRight();
+            }
             PlayerInfo.State.MoveRight();
         }
 
@@ -82,28 +98,28 @@ namespace Roguelike.Player
         {
             if (PlayerInfo.State.isUp)
             {
-                MoveDown();
+                PlayerInfo.State.MoveDown();
             }
         }
         public void StopMoveDown()
         {
             if (PlayerInfo.State.isDown)
             {
-                MoveUp();
+                PlayerInfo.State.MoveUp();
             }
         }
         public void StopMoveLeft()
         {
             if (PlayerInfo.State.isLeft)
             {
-                MoveRight();
+                PlayerInfo.State.MoveRight();
             }
         }
         public void StopMoveRight()
         {
             if (PlayerInfo.State.isRight)
             {
-                MoveLeft();
+                PlayerInfo.State.MoveLeft();
             }
         }
     }
