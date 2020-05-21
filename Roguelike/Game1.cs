@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Roguelike.Content;
 using Roguelike.Controller;
 using Roguelike.Player;
+using Roguelike.World;
 
 namespace Roguelike
 {
@@ -53,6 +54,7 @@ namespace Roguelike
         {
             // TODO: Add your initialization logic here
             PlayerManager.Instance().Initialize();
+            WorldManager.Instance().Initialize();
             base.Initialize();
         }
 
@@ -66,8 +68,8 @@ namespace Roguelike
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             PlayerManager.Instance().LoadContent(Content);
+            WorldManager.Instance().LoadContent(Content);
 
-            //worldContent = new WorldContent(Content);
         }
 
         /// <summary>
@@ -87,6 +89,7 @@ namespace Roguelike
         protected override void Update(GameTime gameTime)
         {
             PlayerManager.Instance().Update(gameTime);
+            WorldManager.Instance().Update(gameTime);
             keyboard.Update();
             base.Update(gameTime);
         }
@@ -100,8 +103,9 @@ namespace Roguelike
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin(SpriteSortMode.BackToFront);
-
+            WorldManager.Instance().Draw(spriteBatch);
             PlayerManager.Instance().Draw(spriteBatch);
+            
             //spriteBatch.Draw(test, new Rectangle(0, 0, 800, 480), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);

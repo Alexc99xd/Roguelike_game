@@ -16,10 +16,12 @@ namespace Roguelike.Content
 
         //player
         public Texture2D PlaceHolderBG { get; set; }
+        public Texture2D PlaceHolderBG2 { get; set; }
         public WorldContent(ContentManager content)
         {
             //this.content = content;
             PlaceHolderBG = content.Load<Texture2D>("World/placeHolderBG");
+            PlaceHolderBG2 = content.Load<Texture2D>("World/chan_alex");
         }
 
 
