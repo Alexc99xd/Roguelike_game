@@ -13,6 +13,7 @@ namespace Roguelike.Player
         public IPlayerState State { get => PlayerInfo.State; set => PlayerInfo.State = value; }
         public Vector2 Location { get => PlayerInfo.Location; set => PlayerInfo.Location = value; }
         public Vector2 Velocity { get => PlayerInfo.Velocity; set => PlayerInfo.Velocity = value; }
+        //public Vector2 SpriteCenter {  //get from state? or Sprite?}
 
         private PlayerManager()
         {

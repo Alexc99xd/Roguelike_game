@@ -1,11 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Roguelike.Content;
 using Roguelike.Controller;
 using Roguelike.Player;
 using Roguelike.World;
+using Roguelike.Camera;
 
 namespace Roguelike
 {
@@ -23,12 +22,15 @@ namespace Roguelike
         public PlayerContent playerContent;
         WorldContent worldContent;
         public Texture2D test;
+        private GameCamera cam;
 
         private Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-
+            graphics.PreferredBackBufferHeight = 900;
+            graphics.PreferredBackBufferWidth = 1600;
+            cam = new GameCamera();
             keyboard = new KeyboardController();
 
 
@@ -52,7 +54,8 @@ namespace Roguelike
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            Global.ViewportWidth = graphics.GraphicsDevice.Viewport.Width;
+            Global.ViewportHeight = graphics.GraphicsDevice.Viewport.Height;
             PlayerManager.Instance().Initialize();
             WorldManager.Instance().Initialize();
             base.Initialize();
@@ -88,9 +91,11 @@ namespace Roguelike
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            cam.CenterOn(PlayerManager.Instance().Location);
             PlayerManager.Instance().Update(gameTime);
             WorldManager.Instance().Update(gameTime);
             keyboard.Update();
+            System.Console.WriteLine(Global.ViewportHeight);
             base.Update(gameTime);
         }
 
@@ -102,7 +107,8 @@ namespace Roguelike
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin(SpriteSortMode.BackToFront);
+            //spriteBatch.Begin(SpriteSortMode.BackToFront);
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, null, null, null, null, cam.TranslationMatrix);
             WorldManager.Instance().Draw(spriteBatch);
             PlayerManager.Instance().Draw(spriteBatch);
             
