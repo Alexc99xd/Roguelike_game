@@ -16,7 +16,7 @@ namespace Roguelike.Player
         //probably should have player states...
         public MainPlayer()
         {
-            Location = new Vector2(200, 2500);
+            Location = new Vector2(200, 2000);
 
         }
 

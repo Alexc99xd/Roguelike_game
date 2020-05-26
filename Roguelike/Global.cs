@@ -12,6 +12,10 @@ namespace Roguelike
         public static int ViewportWidth = 0;
         public static int ViewportHeight = 0;
 
+        public enum Direction
+        {
+            Up, Right, Down, Left, None, UpRight, UpLeft, DownRight, DownLeft,
+        }
 
     }
 }

@@ -21,10 +21,10 @@ namespace Roguelike.World
         private int walkDistance = 0;
         private int maxWalkDistance = 1000;
         private int maxHelperWalkDistance = 55;
-        private int downBias = 10;
-        private int rightBias = 16;
-        private int upBias = 10;
-        private int leftBias = 8;
+        private int downBias = 20;
+        private int rightBias = 20;
+        private int upBias = 20;
+        private int leftBias = 20;
         private bool creatingMode;
         private int reproduceRate = 20;
         private int reproduceCounter = 0;
@@ -58,15 +58,61 @@ namespace Roguelike.World
 
         private Tuple<int,int> GetStartCell()
         {
-            int x = rnd.Next(10, 30);
-            int y = rnd.Next(100, 120);
+            int x = rnd.Next(30, 50);
+            int y = rnd.Next(30, 50);
             headCell = new Walker(new Vector2(x * Global.SpriteWidth, y * Global.SpriteHeight), x, y);
             return new Tuple<int, int>(x,y);
+        }
+
+        private void ChangeBias(Global.Direction direction, double magnitude)
+        {
+            upBias = 20;
+            leftBias = 20;
+            rightBias = 20;
+            downBias = 20;
+            switch (direction)
+            {
+                case Global.Direction.Up:
+                    upBias = (int)magnitude * upBias;
+                    downBias = 16;
+                    break;
+                case Global.Direction.Right:
+                    rightBias = (int)magnitude * rightBias;
+                    leftBias = 16;
+                    break;
+                case Global.Direction.Down:
+                    downBias = (int)magnitude * downBias;
+                    upBias = 16;
+                    break;
+                case Global.Direction.Left:
+                    leftBias = (int)magnitude * leftBias;
+                    rightBias = 16;
+                    break;
+                case Global.Direction.None:
+                    break;
+                case Global.Direction.UpRight:
+                    upBias = (int)magnitude * upBias;
+                    rightBias = (int)magnitude * rightBias;
+                    break;
+                case Global.Direction.UpLeft:
+                    leftBias = (int)magnitude * leftBias;
+                    upBias = (int)magnitude * upBias;
+                    break;
+                case Global.Direction.DownRight:
+                    downBias = (int)magnitude * downBias;
+                    rightBias = (int)magnitude * rightBias;
+                    break;
+                case Global.Direction.DownLeft:
+                    downBias = (int)magnitude * downBias;
+                    leftBias = (int)magnitude * leftBias;
+                    break;
+            }
         }
 
         private void StartWalk()
         {
             creatingMode = true;
+            ChangeBias(Global.Direction.Right, 4);
         }
 
         public void Update(GameTime gameTime)
@@ -142,6 +188,7 @@ namespace Roguelike.World
                     //update it
                     helper.Update(gameTime);
 
+                    //pond creator
                     if (i % 11 == 10)
                     {
                         Tuple<int, int> pond = helperWalkerCells[i].GridLocation;
@@ -172,6 +219,15 @@ namespace Roguelike.World
                     //change all walkers to dirt except last one
                     helperWalkerCells.Clear();
                     CellArray[endCell.Item1, endCell.Item2] = new Hole(new Vector2(endCell.Item1 * Global.SpriteWidth, endCell.Item2 * Global.SpriteHeight), endCell.Item1, endCell.Item2);
+                }
+
+                if(walkDistance == 350)
+                {
+                    ChangeBias(Global.Direction.Down, 2);
+                } 
+                else if( walkDistance == 680)
+                {
+                    ChangeBias(Global.Direction.DownLeft, 2);
                 }
             }
         }
@@ -249,5 +305,6 @@ namespace Roguelike.World
                 return 3;
             }
         }
+        
     }
 }
