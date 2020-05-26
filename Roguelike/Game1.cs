@@ -95,7 +95,6 @@ namespace Roguelike
             PlayerManager.Instance().Update(gameTime);
             WorldManager.Instance().Update(gameTime);
             keyboard.Update();
-            System.Console.WriteLine(Global.ViewportHeight);
             base.Update(gameTime);
         }
 
@@ -110,7 +109,7 @@ namespace Roguelike
             //spriteBatch.Begin(SpriteSortMode.BackToFront);
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, null, null, null, null, cam.TranslationMatrix);
             WorldManager.Instance().Draw(spriteBatch);
-            PlayerManager.Instance().Draw(spriteBatch);
+            //PlayerManager.Instance().Draw(spriteBatch);
             
             //spriteBatch.Draw(test, new Rectangle(0, 0, 800, 480), Color.White);
             spriteBatch.End();

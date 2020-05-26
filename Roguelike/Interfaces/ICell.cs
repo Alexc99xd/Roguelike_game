@@ -1,15 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Roguelike.Sprite;
+using System;
 
-namespace Roguelike.Sprite
+namespace Roguelike.Interfaces
 {
-    public interface ISprite
+    public interface ICell
     {
+        ISprite Sprite { get; set; }
+        Vector2 Location { get; set; }
+        Tuple<int,int> GridLocation { get; set; }
         void Draw(SpriteBatch spriteBatch);
         void Draw(SpriteBatch spriteBatch, float priority);
-
         void Update(GameTime gameTime);
-
-        Vector2 Location { get; set; }
     }
 }

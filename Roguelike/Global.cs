@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Roguelike
 {
@@ -12,8 +8,10 @@ namespace Roguelike
         public static readonly int MapHeight = 36;
         public static readonly int SpriteWidth = 64;
         public static readonly int SpriteHeight = 64;
-
+        public static readonly int arraySize = 256;
         public static int ViewportWidth = 0;
         public static int ViewportHeight = 0;
+
+
     }
 }

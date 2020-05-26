@@ -1,13 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Roguelike.Interfaces;
 using Roguelike.Player;
 using Roguelike.Sprite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Roguelike.PlayerState
 {

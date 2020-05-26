@@ -3,11 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Roguelike.Interfaces;
 using Roguelike.PlayerState;
 using Roguelike.Sprite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Roguelike.Player
 {
@@ -21,7 +16,7 @@ namespace Roguelike.Player
         //probably should have player states...
         public MainPlayer()
         {
-            Location = new Vector2(100, 100);
+            Location = new Vector2(200, 2500);
 
         }
 

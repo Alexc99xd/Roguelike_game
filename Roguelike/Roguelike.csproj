@@ -42,6 +42,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Camera\Camera.cs" />
+    <Compile Include="Cell\CellSpriteFactory.cs" />
+    <Compile Include="Cell\HelperWalker.cs" />
+    <Compile Include="Cell\Walker.cs" />
+    <Compile Include="Cell\Water.cs" />
+    <Compile Include="Cell\Wall.cs" />
+    <Compile Include="Cell\Hole.cs" />
+    <Compile Include="Cell\Dirt.cs" />
     <Compile Include="Commands\MoveRightCommand.cs" />
     <Compile Include="Commands\MoveLeftCommand.cs" />
     <Compile Include="Commands\MoveDownCommand.cs" />
@@ -53,6 +60,7 @@
     <Compile Include="Controller\KeyPressStack.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="Interfaces\ICell.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IKeyboard.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />

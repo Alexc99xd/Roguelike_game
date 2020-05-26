@@ -66,6 +66,13 @@ namespace Roguelike.Sprite
 
         }
 
+        public void Draw(SpriteBatch spriteBatch, float priority)
+        {
+            Rectangle sourceRectangle = new Rectangle(currentFrame * frameWidth, 0, frameWidth, frameHeight);
+            destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, frameWidth, frameHeight);
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, tint, 0, Vector2.Zero, SpriteEffects.None, priority);
+        }
+
 
 
         public void Update(GameTime gameTime)
