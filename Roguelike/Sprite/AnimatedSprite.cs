@@ -51,7 +51,7 @@ namespace Roguelike.Sprite
         }
 
         public void Draw(SpriteBatch spriteBatch, float priority) { }
-
+        public void DrawMini(SpriteBatch spriteBatch) { }
         public void Update(GameTime gameTime)
         {
 

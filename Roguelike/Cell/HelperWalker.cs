@@ -11,6 +11,8 @@ namespace Roguelike.Cell
         public ISprite Sprite { get; set; }
         public Vector2 Location { get; set; }
         public Tuple<int, int> GridLocation { get; set; }
+
+        public int LayerType { get => 0; set => LayerType = value; }
         public HelperWalker(Vector2 location, int x, int y)
         {
             GridLocation = new Tuple<int, int>(x, y);
@@ -27,7 +29,10 @@ namespace Roguelike.Cell
         {
             Sprite.Draw(spriteBatch, priority);
         }
-
+        public void DrawMini(SpriteBatch spriteBatch)
+        {
+            Sprite.DrawMini(spriteBatch);
+        }
         public void Update(GameTime gameTime)
         {
             Location = new Vector2(GridLocation.Item1 * Global.SpriteWidth, GridLocation.Item2 * Global.SpriteHeight);

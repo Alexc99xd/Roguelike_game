@@ -8,7 +8,7 @@ namespace Roguelike.Camera
         // Construct a new Camera class with standard zoom (no scaling)
         public GameCamera()
         {
-            Zoom = 0.08f;
+            Zoom = 0.15f;
         }
 
         // Centered Position of the Camera in pixels.

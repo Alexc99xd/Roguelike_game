@@ -11,6 +11,8 @@ namespace Roguelike.Cell
         public ISprite Sprite { get; set; }
         public Vector2 Location { get; set; }
         public Tuple<int, int> GridLocation { get; set; }
+
+        public int LayerType { get => 0; set => LayerType = value; }
         public Water(Vector2 location, int x, int y)
         {
             GridLocation = new Tuple<int, int>(x, y);
@@ -26,7 +28,10 @@ namespace Roguelike.Cell
         {
             Sprite.Draw(spriteBatch, priority);
         }
-
+        public void DrawMini(SpriteBatch spriteBatch)
+        {
+            Sprite.DrawMini(spriteBatch);
+        }
         public void Update(GameTime gameTime)
         {
 

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Roguelike.Content;
 using Roguelike.Controller;
 using Roguelike.Player;
 using Roguelike.World;
@@ -20,9 +19,9 @@ namespace Roguelike
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public PlayerContent playerContent;
-        WorldContent worldContent;
         public Texture2D test;
         private GameCamera cam;
+
 
         private Game1()
         {
@@ -32,7 +31,6 @@ namespace Roguelike
             graphics.PreferredBackBufferWidth = 1600;
             cam = new GameCamera();
             keyboard = new KeyboardController();
-
 
         }
 
@@ -58,6 +56,9 @@ namespace Roguelike
             Global.ViewportHeight = graphics.GraphicsDevice.Viewport.Height;
             PlayerManager.Instance().Initialize();
             WorldManager.Instance().Initialize();
+
+            
+
             base.Initialize();
         }
 
@@ -91,8 +92,11 @@ namespace Roguelike
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            cam.CenterOn(PlayerManager.Instance().Location);
-            PlayerManager.Instance().Update(gameTime);
+            if (WorldManager.Instance().RayCast == null)
+            {
+                cam.CenterOn(PlayerManager.Instance().Location);
+            }
+            //PlayerManager.Instance().Update(gameTime);
             WorldManager.Instance().Update(gameTime);
             keyboard.Update();
             base.Update(gameTime);
@@ -107,13 +111,31 @@ namespace Roguelike
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             //spriteBatch.Begin(SpriteSortMode.BackToFront);
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, null, null, null, null, cam.TranslationMatrix);
-            WorldManager.Instance().Draw(spriteBatch);
-            //PlayerManager.Instance().Draw(spriteBatch);
-            
-            //spriteBatch.Draw(test, new Rectangle(0, 0, 800, 480), Color.White);
-            spriteBatch.End();
+
+            if(WorldManager.Instance().RayCast == null) //2d top down camera needed
+            {
+                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, null, null, null, null, cam.TranslationMatrix);
+                WorldManager.Instance().Draw(spriteBatch);
+                spriteBatch.End();
+            }
+            else //2.5D camera needed
+            {
+               
+                spriteBatch.Begin();
+                WorldManager.Instance().DrawSkyFloor(spriteBatch);
+                spriteBatch.End();
+
+
+                spriteBatch.Begin();
+                WorldManager.Instance().Draw(spriteBatch);
+                spriteBatch.End();
+
+
+            }
+
             base.Draw(gameTime);
         }
+
+
     }
 }

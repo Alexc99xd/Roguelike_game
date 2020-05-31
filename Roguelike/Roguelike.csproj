@@ -42,6 +42,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Camera\Camera.cs" />
+    <Compile Include="Camera\RayCastCam.cs" />
+    <Compile Include="Camera\VertLine.cs" />
     <Compile Include="Cell\CellSpriteFactory.cs" />
     <Compile Include="Cell\HelperWalker.cs" />
     <Compile Include="Cell\Walker.cs" />

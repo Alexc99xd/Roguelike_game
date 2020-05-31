@@ -12,6 +12,8 @@ namespace Roguelike.Interfaces
         Tuple<int,int> GridLocation { get; set; }
         void Draw(SpriteBatch spriteBatch);
         void Draw(SpriteBatch spriteBatch, float priority);
+        void DrawMini(SpriteBatch spriteBatch);
         void Update(GameTime gameTime);
+        int LayerType { get; set; }
     }
 }

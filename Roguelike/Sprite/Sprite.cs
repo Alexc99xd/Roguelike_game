@@ -21,6 +21,7 @@ namespace Roguelike.Sprite
         private int framesPerSecond = 1;
         private int millisecondsPerFrame => 1000 / framesPerSecond;
         private bool simpleDraw = false;
+        private float miniZoom = 0.33f;
         public Sprite(Texture2D texture, float priority, Vector2 location)
         {
             this.texture = texture;
@@ -71,6 +72,13 @@ namespace Roguelike.Sprite
             Rectangle sourceRectangle = new Rectangle(currentFrame * frameWidth, 0, frameWidth, frameHeight);
             destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, frameWidth, frameHeight);
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, tint, 0, Vector2.Zero, SpriteEffects.None, priority);
+        }
+
+        public void DrawMini(SpriteBatch spriteBatch)
+        {
+            Rectangle sourceRectangle = new Rectangle(currentFrame * frameWidth, 0, frameWidth, frameHeight);
+            destinationRectangle = new Rectangle((int)(Location.X * miniZoom), (int)(Location.Y * miniZoom), frameWidth, frameHeight);
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, tint);
         }
 
 

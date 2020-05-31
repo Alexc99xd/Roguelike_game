@@ -16,7 +16,7 @@ namespace Roguelike.Player
         //probably should have player states...
         public MainPlayer()
         {
-            Location = new Vector2(200, 2000);
+            Location = new Vector2(128, 128);
 
         }
 
@@ -35,6 +35,7 @@ namespace Roguelike.Player
         {
             State.Update(gameTime);
             sprite.Location = Location;
+            System.Console.WriteLine(Location);
         }
 
     }
