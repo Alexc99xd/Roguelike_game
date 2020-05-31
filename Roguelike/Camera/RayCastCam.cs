@@ -12,23 +12,19 @@ namespace Roguelike.Camera
 
         private Vector2 Position = new Vector2(1.5f, 1.4f);
         private Vector2 Direction = new Vector2(1f, 0f);
-        private Vector2 Plane = new Vector2(0.0f, 1f);
+        private Vector2 Plane = new Vector2(0f, 1f);
 
         private int w = Global.ViewportWidth;
         private int h = Global.ViewportHeight;
         public ICell[,] CellArray;
         private Rectangle[] vertLines;
 
-        //--move speed--//
         private readonly double moveSpeed = 0.08;
 
-        //--rotate speed--//
         private readonly double rotSpeed = -0.05;
 
-        //--cam x pre calc--//
         private double[] camX;
 
-        //--structs that contain rects and tints for each level or "floor" renderered--//
         private Global.Level level;
 
         public RayCastCam(Rectangle[] vert, Global.Level level)
@@ -42,14 +38,8 @@ namespace Roguelike.Camera
             vertLines = vert;
             this.level = level;
             CellArray = WorldManager.Instance().Gen.CellArray;
-
-            //--init cam pre calc array--//
             camX = new double[w];
             preCalcCamX();
-
-
-
-
             Raycast();
         }
 

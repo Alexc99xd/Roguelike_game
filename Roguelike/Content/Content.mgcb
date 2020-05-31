@@ -181,6 +181,18 @@
 /processorParam:TextureFormat=Color
 /build:World/dirt.png
 
+#begin World/grass.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:World/grass.png
+
 #begin World/headWalker.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -229,7 +241,7 @@
 /processorParam:TextureFormat=Color
 /build:World/Walker.png
 
-#begin World/wall.png
+#begin World/wall.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -239,7 +251,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:World/wall.png
+/build:World/wall.jpg
 
 #begin World/water.png
 /importer:TextureImporter

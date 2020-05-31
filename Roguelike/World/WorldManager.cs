@@ -73,7 +73,7 @@ namespace Roguelike.World
 
         public void DrawSkyFloor(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(WorldCont.HeadWalker,
+            spriteBatch.Draw(WorldCont.Grass,
                new Rectangle(0, (int)(Global.ViewportHeight * 0.5f), Global.ViewportWidth, (int)(Global.ViewportHeight * 0.5f)),
                new Rectangle(0, 0, Global.SpriteWidth, Global.SpriteHeight),
                Color.White);

@@ -16,7 +16,7 @@ namespace Roguelike.Content
         public Texture2D Wall { get; set; }
         public Texture2D Water { get; set; }
         public Texture2D Hole { get; set; }
-
+        public Texture2D Grass { get; set; }
         public Texture2D HeadWalker { get; set; }
         public Texture2D Walker { get; set; }
 
@@ -31,6 +31,7 @@ namespace Roguelike.Content
             Hole = content.Load<Texture2D>("World/Hole");
             HeadWalker = content.Load<Texture2D>("World/headWalker");
             Walker = content.Load<Texture2D>("World/Walker");
+            Grass = content.Load<Texture2D>("World/Grass");
         }
 
 
